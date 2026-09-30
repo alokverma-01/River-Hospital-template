@@ -1,0 +1,41 @@
+/* =====================================================================
+   THEME  —  REBRAND POINT #2
+   Change colours, fonts and shape here. Everything else reads these.
+   If you change fonts, also update the Google Fonts <link> in each page.
+   ===================================================================== */
+:root {
+  /* Brand */
+  --brand: #1f6f66;         /* main colour: links, headings accents, focus */
+  --brand-700: #164f49;
+  --brand-100: #d3e8e2;
+  --brand-50: #eaf4f1;
+  --accent: #f4b43c;        /* primary "Book appointment" buttons */
+  --accent-700: #c98c14;
+  --emergency: #c8102e;     /* emergency bar and emergency tiles only */
+
+  /* Neutrals */
+  --ink: #12302e;           /* body text */
+  --muted: #4f6562;         /* secondary text */
+  --line: #d6e2de;          /* borders */
+  --paper: #f4f7f5;         /* page background */
+  --surface: #ffffff;       /* cards, form fields */
+
+  /* Type */
+  --font-head: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Figtree", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Shape and motion */
+  --r-xl: 36px;
+  --r-lg: 24px;
+  --r-md: 16px;
+  --r-sm: 10px;
+  --shadow-soft: 0 1px 2px rgb(18 48 46 / .06), 0 12px 32px -12px rgb(18 48 46 / .18);
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --container: 1200px;
+
+  /* Vertical spacing (make smaller for a tighter site, larger for more air) */
+  --space-section: clamp(3rem, 6vw, 5rem);          /* gap between main sections */
+  --space-section-tight: clamp(2rem, 4vw, 3rem);    /* gap for compact sections */
+  --space-hero-top: clamp(1.5rem, 3vw, 2.5rem);     /* space under the header on every page */
+  --space-head: clamp(1.5rem, 3vw, 2.5rem);         /* space under section titles */
+}

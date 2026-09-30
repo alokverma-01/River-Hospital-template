@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Home | {{name}}</title>
+  <meta name="description" content="Book appointments, find specialist doctors and get emergency care.">
+  <meta name="theme-color" content="#1f6f66">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <script>
+    /* Runs before paint: motion preference + first-visit loader */
+    (function (h) {
+      var off = false, rm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      try { off = localStorage.getItem("motion") === "off"; } catch (e) {}
+      h.classList.add("js");
+      if (off) h.classList.add("reduce-motion");
+      try { if (!off && !rm && !sessionStorage.getItem("seenLoader")) h.classList.add("show-loader"); } catch (e) {}
+    })(document.documentElement);
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Figtree:wght@400..800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/14.2.0/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+
+  <!-- Content (edit assets/js/config.js), then libraries, then site scripts -->
+  <script defer src="assets/js/config.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+  <script defer src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/14.2.0/swiper-bundle.min.js"></script>
+  <script defer src="assets/js/layout.js"></script>
+  <script defer src="assets/js/render.js"></script>
+  <script defer src="assets/js/motion.js"></script>
+</head>
+<body data-page="home">
+  <div id="site-header"></div>
+
+  <main id="main" tabindex="-1">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="hero-status" data-hero><span class="live" aria-hidden="true"></span>Emergency department open now</p>
+          <h1 data-split data-bind="tagline">Specialist care, close to home</h1>
+          <p class="lead" data-hero data-bind="intro"></p>
+          <div class="hero-actions" data-hero>
+            <a class="btn btn-accent magnetic" href="appointment.html"><i data-lucide="calendar-check" aria-hidden="true"></i>Book appointment</a>
+            <a class="btn btn-ghost" href="doctors.html"><i data-lucide="search" aria-hidden="true"></i>Find a doctor</a>
+          </div>
+          <div class="hero-trust" data-hero>
+            <div><span class="stars" data-stars></span><span><span data-rating></span> average patient rating</span></div>
+            <div><i data-lucide="shield-check" aria-hidden="true"></i>Nationally accredited</div>
+            <div><i data-lucide="clock" aria-hidden="true"></i><span><span data-stat="3"></span> average emergency wait</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="monitor" data-parallax="5">
+            <div class="monitor-top">
+              <div class="monitor-bpm"><span id="bpm">72</span><small>Heart rate, beats per minute</small></div>
+              <div class="monitor-heart" aria-hidden="true"><i data-lucide="heart" aria-hidden="true"></i></div>
+            </div>
+            <div class="monitor-line" aria-hidden="true">
+              <svg viewBox="0 0 600 120" preserveAspectRatio="none">
+                <path class="ghost" vector-effect="non-scaling-stroke" d="M0 60 H90 L105 40 L120 75 L140 10 L160 110 L175 60 H300 L315 40 L330 75 L350 10 L370 110 L385 60 H600"/>
+                <path class="trace" pathLength="1000" vector-effect="non-scaling-stroke" d="M0 60 H90 L105 40 L120 75 L140 10 L160 110 L175 60 H300 L315 40 L330 75 L350 10 L370 110 L385 60 H600"/>
+              </svg>
+            </div>
+            <button class="monitor-pause" type="button" data-monitor-pause aria-pressed="false" aria-label="Pause heartbeat animation"><i data-lucide="pause" aria-hidden="true"></i></button>
+            <div class="glass-chip chip-a">
+              <span class="chip-ico"><i data-lucide="calendar-check" aria-hidden="true"></i></span>
+              <span><strong>Same-day appointments</strong>Request before noon to be seen today</span>
+            </div>
+          </div>
+          <div class="glass-chip chip-b">
+            <span class="chip-ico"><i data-lucide="stethoscope" aria-hidden="true"></i></span>
+            <span><strong><span data-stat="1"></span> specialists</strong>across 8 departments</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight" aria-label="Quick actions">
+      <div class="container bento" data-reveal-group>
+        <a class="tile tile-emergency" data-tel-emergency href="#">
+          <span class="tile-ico"><i data-lucide="ambulance" aria-hidden="true"></i></span>
+          <div>
+            <span class="big-num" data-bind="emergencyPhone"></span>
+            <h3>Emergency? Call now</h3>
+            <p>Our emergency department is open 24 hours a day, with trauma, cardiac and children's teams on site.</p>
+          </div>
+        </a>
+        <a class="tile tile-accent" href="appointment.html">
+          <span class="tile-ico"><i data-lucide="calendar-check" aria-hidden="true"></i></span>
+          <div><h3>Book an appointment</h3><p>Choose a department, date and time in three short steps.</p></div>
+        </a>
+        <a class="tile" href="doctors.html">
+          <span class="tile-ico"><i data-lucide="user-round" aria-hidden="true"></i></span>
+          <div><h3>Find a doctor</h3><p>Filter by department or language.</p></div>
+        </a>
+        <a class="tile tile-wide" href="contact.html">
+          <span class="tile-ico"><i data-lucide="map-pin" aria-hidden="true"></i></span>
+          <div><h3>Visiting and directions</h3><p data-bind="visitingHours"></p></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-head">
+          <div><h2 data-split>A hospital your family already knows</h2><p>Decades of local care, with the specialists and equipment of a major medical centre.</p></div>
+          <a class="btn btn-ghost" href="services.html">See all services</a>
+        </div>
+        <div class="stats" id="stats"></div>
+      </div>
+    </section>
+
+    <section class="hscroll" aria-labelledby="deptTitle">
+      <div class="container section-head hscroll-head">
+        <div><h2 id="deptTitle" data-split>Every department under one roof</h2><p>Specialist teams share one building, one record and one care plan, so you never repeat your story.</p></div>
+        <div class="hscroll-controls">
+          <p class="hscroll-hint"><i data-lucide="move-horizontal" aria-hidden="true"></i>Scroll or swipe to explore</p>
+          <div class="carousel-controls">
+            <button class="icon-btn" type="button" data-hscroll="prev" aria-controls="hscrollTrack" aria-label="Previous department"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+            <button class="icon-btn" type="button" data-hscroll="next" aria-controls="hscrollTrack" aria-label="Next department"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="hscroll-track" id="hscrollTrack"></div>
+    </section>
+
+    <section class="section section-brand">
+      <div class="container">
+        <div class="section-head">
+          <div><h2 data-split>Meet the specialists</h2><p>Every doctor lists their clinic days, so you can book the person you want to see.</p></div>
+          <div class="carousel-controls">
+            <button class="icon-btn" type="button" data-prev="doctors" aria-label="Previous doctors"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+            <button class="icon-btn" type="button" data-next="doctors" aria-label="Next doctors"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div class="swiper" data-swiper="doctors"><div class="swiper-wrapper" id="featuredDoctors"></div></div>
+        <div class="dots" data-dots="doctors"></div>
+        <p style="margin:2rem 0 0"><a class="text-link" href="doctors.html">See all doctors<i data-lucide="arrow-right" aria-hidden="true"></i></a></p>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-head">
+          <div><h2 data-split>What patients say</h2><p>Rated <span data-rating></span> out of 5 across <span data-review-count></span> recent reviews.</p></div>
+          <div class="carousel-controls">
+            <button class="icon-btn" type="button" data-carousel-pause="reviews" aria-pressed="false" aria-label="Pause automatic sliding"><i data-lucide="pause" aria-hidden="true"></i></button>
+            <button class="icon-btn" type="button" data-prev="reviews" aria-label="Previous review"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+            <button class="icon-btn" type="button" data-next="reviews" aria-label="Next review"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div class="swiper" data-swiper="reviews"><div class="swiper-wrapper js-review-slides"></div></div>
+        <div class="dots" data-dots="reviews"></div>
+        <p style="margin:2rem 0 0"><a class="btn btn-ghost" href="reviews.html">Read all reviews</a></p>
+      </div>
+    </section>
+
+    <section class="section-tight" aria-labelledby="partnersTitle">
+      <div class="container"><h2 id="partnersTitle" class="muted" style="font-family:var(--font-body);font-size:1rem;letter-spacing:0;text-align:center;margin-bottom:1.5rem">Accredited nationally and accepted by major insurance plans</h2></div>
+      <div class="container marquee-wrap">
+        <div class="marquee" id="marquee"></div>
+        <button class="icon-btn" type="button" data-marquee-pause="marquee" aria-pressed="false" aria-label="Pause scrolling logos"><i data-lucide="pause" aria-hidden="true"></i></button>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-band" data-reveal-scale>
+          <svg class="cta-line" viewBox="0 0 600 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 110 H210 L235 60 L265 170 L300 20 L330 185 L352 110 H600"/></svg>
+          <div><h2>Not sure which specialist you need?</h2><p>Call the front desk and a nurse will point you to the right department.</p></div>
+          <div class="btn-group"><a class="btn btn-brand magnetic" data-tel href="#"><i data-lucide="phone" aria-hidden="true"></i>Call <span data-bind="phone"></span></a><a class="btn btn-ghost" href="appointment.html"><i data-lucide="calendar-check" aria-hidden="true"></i>Book online</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>
